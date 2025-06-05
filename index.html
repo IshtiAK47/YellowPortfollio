@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishtiak Mahmood | Stand User Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --purple: #8A2BE2;
+            --pink: #FF1493;
+            --cyan: #00FFFF;
+            --dark: #2F1B69;
+            --black: #0a0a0a;
+            --white: #FFFFFF;
+            --shadow: rgba(255, 215, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(45deg, var(--dark), var(--black));
+            color: var(--white);
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="0,0 0,20 20,10" fill="%23FFD700"/></svg>'), auto;
+        }
+
+        /* Animated Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 50%, var(--purple) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, var(--pink) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, var(--cyan) 0%, transparent 50%);
+            animation: cosmicPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes cosmicPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* Menacing Effect */
+        .menacing {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+            animation: menacingFloat 3s ease-in-out infinite;
+            z-index: 10;
+            pointer-events: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+        }
+
+        @keyframes menacingFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            25% { transform: translateY(-10px) rotate(5deg); opacity: 1; }
+            75% { transform: translateY(-5px) rotate(-5deg); opacity: 0.8; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(47, 27, 105, 0.9), transparent);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--gold);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            from { text-shadow: 0 0 10px var(--gold); }
+            to { text-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--pink));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--gold), var(--pink), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleEntrance 2s ease-out;
+            position: relative;
+        }
+
+        @keyframes titleEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            animation: subtitleSlide 2s ease-out 0.5s both;
+        }
+
+        @keyframes subtitleSlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: descriptionFade 2s ease-out 1s both;
+        }
+
+        @keyframes descriptionFade {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stand Rush Button */
+        .stand-rush-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, var(--gold), var(--pink));
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: buttonAppear 2s ease-out 1.5s both;
+        }
+
+        @keyframes buttonAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stand-rush-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--gold);
+        }
+
+        .stand-rush-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stand-rush-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Floating Effects */
+        .floating-katakana {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.3;
+            animation: floatAround 10s linear infinite;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--pink), var(--cyan));
+            transform: translateX(-50%);
+            animation: underlineGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes underlineGlow {
+            from { box-shadow: 0 0 5px var(--gold); }
+            to { box-shadow: 0 0 20px var(--gold), 0 0 30px var(--pink); }
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 30px var(--shadow);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px var(--gold);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stand Stats */
+        .stand-stats {
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .stat-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .stat-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stat-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--pink));
+            border-radius: 10px;
+            position: relative;
+            animation: statFill 2s ease-in-out;
+        }
+
+        @keyframes statFill {
+            0% { width: 0%; }
+        }
+
+        .stat-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: statShine 2s ease-in-out infinite;
+        }
+
+        @keyframes statShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(47, 27, 105, 0.8), rgba(138, 43, 226, 0.3));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--gold), transparent);
+            animation: cardRotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes cardRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .project-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, var(--pink), var(--cyan));
+            color: var(--black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .demo-link {
+            background: linear-gradient(45deg, var(--gold), var(--pink));
+            color: var(--black);
+        }
+
+        .demo-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .code-link {
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+        }
+
+        .code-link:hover {
+            background: var(--cyan);
+            color: var(--black);
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark), var(--black));
+            border-top: 3px solid var(--gold);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid var(--gold);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--gold), var(--pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        .contact-text h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            backdrop-filter: blur(15px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--gold), var(--pink));
+            color: var(--black);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Menacing Effects -->
+    <div class="menacing" style="top: 20%; left: 10%;">ゴ</div>
+    <div class="menacing" style="top: 60%; right: 15%; animation-delay: 1s;">ゴ</div>
+    <div class="menacing" style="top: 40%; left: 80%; animation-delay: 2s;">ゴ</div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">STAND USER</a>
+            <div class="nav-links">
+                <a href="#about">STATS</a>
+                <a href="#projects">BATTLES</a>
+                <a href="#contact">RECRUIT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">ISHTIAK MAHMOOD</h1>
+            <h2 class="hero-subtitle">『CODE EXPERIENCE REQUIEM』</h2>
+            <p class="hero-description">
+                A Stand User Developer wielding the power of Full Stack Development. 
+                My Stand allows me to create web applications that transcend reality itself!
+            </p>
+            <a href="#projects" class="stand-rush-btn">ORA ORA ORA!</a>
+        </div>
+        
+        <!-- Floating Katakana -->
+        <div class="floating-katakana" style="left: 10%; animation-delay: 0s;">ド</div>
+        <div class="floating-katakana" style="left: 70%; animation-delay: 3s;">ン</div>
+        <div class="floating-katakana" style="left: 40%; animation-delay: 6s;">バ</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">STAND STATS</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://raw.githubusercontent.com/IshtiAK47/IshtiAK47/refs/heads/main/images/p1.jpg" alt="Stand User Ishtiak">
+            </div>
+            <div class="about-text">
+                <p>『CODE EXPERIENCE REQUIEM』- A Stand that materializes the user's programming abilities into reality. Its power grows stronger with each project completed and each technology mastered.</p>
+                <p>Currently studying ICT Engineering at Chandpur Science and Technology University, I've awakened my Stand through countless battles against bugs and deployment demons.</p>
+                <p>My Stand's special ability: "Golden Wind Development" - Can create web applications at incredible speed while maintaining perfect quality!</p>
+                
+                <div class="stand-stats">
+                    <div class="stat-item">
+                        <div class="stat-name">
+                            <span>DESTRUCTIVE POWER (Frontend)</span>
+                            <span>A</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-name">
+                            <span>SPEED (Backend)</span>
+                            <span>B</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-name">
+                            <span>RANGE (Full Stack)</span>
+                            <span>A</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-name">
+                            <span>PRECISION (UI/UX)</span>
+                        <span>B</span>
+                        </div>
